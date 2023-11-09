@@ -1,9 +1,15 @@
 <script setup lang="ts">
+    /* Imports */
     import { ref } from 'vue';
     import NonogramCell from './NonogramCell.vue'
 
-    const numberOfCols = ref<number>(10);
-    const numberOfRows = ref<number>(10);
+    /* Pinia store */
+    import { useTestStore } from '../stores/testStore'
+    const nonogramState = useTestStore();
+
+    /* Initialisation of the component */
+    const numberOfCols = nonogramState.nonogramArrayWidth;
+    const numberOfRows = nonogramState.nonogramArrayHeight;
 </script>
 
 <template>
@@ -14,5 +20,7 @@
                 :key="cell"
             />
         </div>
+        {{ numberOfCols }}
+        {{ numberOfRows }}
     </section>
 </template>
