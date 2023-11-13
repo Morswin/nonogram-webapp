@@ -1,7 +1,7 @@
 <script setup lang="ts">
     /* Imports */
     import { ref } from 'vue';
-    import NonogramCell from './NonogramCell.vue'
+    import NonogramCell from './NonogramCell.vue'  // My IDE points out an error here, yet it works as it should
 
     /* Pinia store */
     import { useTestStore } from '../stores/testStore'
@@ -18,6 +18,7 @@
             <NonogramCell 
                 v-for="cell in numberOfCols * numberOfRows"
                 :key="cell"
+                :state="nonogramState.getArrayCell(cell)"
             />
         </div>
         {{ numberOfCols }}
