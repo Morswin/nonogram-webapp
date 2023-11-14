@@ -1,12 +1,13 @@
 <script setup lang="ts">
     interface Props {
-        state: boolean
+        state: string
     }
     const props = defineProps<Props>()
 </script>
 
 <template>
     <div class="w-8 h-8 m-1 border-2 border-black rounded-md">
+        {{ state }}
         <div 
             v-if="props.state" 
             class="bg-black w-full h-full"
