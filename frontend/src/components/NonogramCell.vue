@@ -1,6 +1,7 @@
 <script setup lang="ts">
     interface Props {
-        state: string
+        state: boolean
+        index: [number, number]
     }
     const props = defineProps<Props>()
 </script>

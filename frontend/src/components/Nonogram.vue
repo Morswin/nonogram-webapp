@@ -8,15 +8,17 @@
     const nonogramState = useTestStore();
 
     console.log(nonogramState.nonogram);
-    
+    console.log(nonogramState.nonogram.getAsArray());
 </script>
 
 <template>
     <section>
         <div class="grid grid-cols-10">
             <NonogramCell 
-                v-for="cell in nonogramState.nonogram.nonogramArrayWidth() * nonogramState.nonogram.nonogramArrayHeight()"
-                :key="cell"
+                v-for="cell in nonogramState.nonogram.getAsArray()"
+                :key="cell[0]"
+                :state="cell[1]"
+                :index="cell[0]"
             />
                 <!-- :state="getArrayCell(cell)" -->
         </div>
