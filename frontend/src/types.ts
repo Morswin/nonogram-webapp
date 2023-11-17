@@ -3,15 +3,13 @@ interface INonogram {
     nonogramWidth: number
     nonogramHeight: number
 
-    getAsArray(): Array<[[number, number], boolean]>
-    // nonogramArrayWidth (): number
-    // nonogramArrayHeight (): number
+    getAsArray(): INonogramIndex[]
 };
 
 class Nonogram implements INonogram {
     nonogramArray: Map<[number, number], boolean>;
-    nonogramWidth: number
-    nonogramHeight: number
+    nonogramWidth: number;
+    nonogramHeight: number;
 
     constructor () {
         this.nonogramWidth = 5;
@@ -24,22 +22,13 @@ class Nonogram implements INonogram {
         }
     }
 
-    getAsArray(): Array<[[number, number], boolean]> {
-        console.log(this.nonogramArray);
-        console.log(new Array<[[number, number], boolean]>());
-        
+    getAsArray = (): INonogramIndex[] => {
+        // console.log(this.nonogramArray);
 
-        let _ret: [[number, number], boolean] = new Array<[[number, number], boolean]>();
+        let _ret: INonogramIndex[] = new Array<INonogramIndex>();
         this.nonogramArray.forEach((value, key) => {
-            // if (_ret == undefined) {
-            //     _ret = new Array();
-            // }
-            _ret.push([...key], value)
+            _ret.push(new NonogramIndex(key[0], key[1], value));
         })
-        // for (let _cell in this.nonogramArray) {
-        //     // _ret.push(_cell);
-        //     console.log(_cell);
-        // }
         
         return _ret;
     }
@@ -63,7 +52,34 @@ class Nonogram implements INonogram {
     //     return nonogramState.nonogramArray[y][x];
     // }
 
+interface INonogramIndex {
+    x: number
+    y: number
+    value: boolean
+
+    getAsKey(): [number, number]
+}
+
+class NonogramIndex implements INonogramIndex{
+    x: number;
+    y: number;
+    value: boolean;
+
+    constructor (x: number, y: number, value: boolean) {
+        this.x = x;
+        this.y = y;
+        this.value = value;
+    }
+
+    getAsKey = (): [number, number] => {
+        return [this.x, this.y];
+    }
+}
+
+
 export {
     type INonogram,
-    Nonogram
+    type INonogramIndex,
+    Nonogram,
+    NonogramIndex
 }

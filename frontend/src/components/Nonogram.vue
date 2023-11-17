@@ -7,8 +7,8 @@
     import { useTestStore } from '../stores/testStore'
     const nonogramState = useTestStore();
 
-    console.log(nonogramState.nonogram);
-    console.log(nonogramState.nonogram.getAsArray());
+    // console.log(nonogramState.nonogram);
+    // console.log(nonogramState.nonogram.getAsArray());
 </script>
 
 <template>
@@ -16,9 +16,9 @@
         <div class="grid grid-cols-10">
             <NonogramCell 
                 v-for="cell in nonogramState.nonogram.getAsArray()"
-                :key="cell[0]"
-                :state="cell[1]"
-                :index="cell[0]"
+                :key="cell.getAsKey()"
+                :state="cell.value"
+                :index="cell.getAsKey()"
             />
                 <!-- :state="getArrayCell(cell)" -->
         </div>
