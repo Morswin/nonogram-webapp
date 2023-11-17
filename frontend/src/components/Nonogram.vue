@@ -6,6 +6,11 @@
     /* Pinia store */
     import { useTestStore } from '../stores/testStore'
     const nonogramState = useTestStore();
+
+    /* Event handlers */
+    const updateCellHandler = (index) => {
+        console.log(index);
+    };
 </script>
 
 <template>
@@ -17,6 +22,8 @@
                 :state="cell.value"
                 :index="cell.getAsKey()"
                 class="border-2 border-black"
+                @update-cell="updateCellHandler(index)"
+                client:load
             />
         </div>
     </section>

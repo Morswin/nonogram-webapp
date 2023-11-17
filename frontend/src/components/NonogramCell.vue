@@ -3,11 +3,19 @@
         state: boolean
         index: [number, number]
     }
-    const props = defineProps<Props>()
+    const props = defineProps<Props>()    
+
+    defineEmits<{(e: 'updateCell', index: [number, number]): void}>();
+    // const updateCellEmit = () => {
+    //     emit('updateCell');
+    // }
 </script>
 
 <template>
-    <div class="w-8 h-8 m-1 border-2 border-black rounded-md">
+    <div 
+        class="w-8 h-8 m-1 border-2 border-black rounded-md"
+        @click="$emit('updateCell', props.index)"
+    >
         <!-- {{ state }} -->
         <div 
             v-if="props.state" 
