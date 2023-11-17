@@ -6,23 +6,18 @@
     /* Pinia store */
     import { useTestStore } from '../stores/testStore'
     const nonogramState = useTestStore();
-
-    // console.log(nonogramState.nonogram);
-    // console.log(nonogramState.nonogram.getAsArray());
 </script>
 
 <template>
     <section>
-        <div class="grid grid-cols-10">
+        <div class="grid grid-cols-5 w-48">
             <NonogramCell 
                 v-for="cell in nonogramState.nonogram.getAsArray()"
                 :key="cell.getAsKey()"
                 :state="cell.value"
                 :index="cell.getAsKey()"
+                class="border-2 border-black"
             />
-                <!-- :state="getArrayCell(cell)" -->
         </div>
-        <!-- {{ numberOfCols }}
-        {{ numberOfRows }} -->
     </section>
 </template>

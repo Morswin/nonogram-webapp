@@ -33,12 +33,6 @@ class Nonogram implements INonogram {
         return _ret;
     }
 };
-
-    // function toArrayIndex(index: number): [number, number] {
-    //     let y: number = Math.floor(index / numberOfRows);
-    //     let x: number = index % numberOfCols;
-    //     return [y, x];  // Y, X
-    // }
     // function setArrayCell(index: number, value: boolean): void {
     //     let _temp: [number, number] = toArrayIndex(index);
     //     let y: number = _temp[0];
