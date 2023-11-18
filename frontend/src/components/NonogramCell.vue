@@ -1,21 +1,38 @@
 <script setup lang="ts">
+    import { type INonogramIndex, NonogramIndex } from '../types'
+
     interface Props {
         state: boolean
         index: [number, number]
     }
     const props = defineProps<Props>()    
 
-    defineEmits<{(e: 'updateCell', index: [number, number]): void}>();
-    // const updateCellEmit = () => {
-    //     emit('updateCell');
-    // }
+    /* Pinia store */
+    import { useNonogramStore } from '../stores/nonogramStore'
+    const nonogramState = useNonogramStore();
+
+    const clicked = () => {
+        console.log(nonogramState.nonogram);
+        nonogramState.nonogram.setCell(new NonogramIndex(
+            props.index[0],
+            props.index[1],
+            !props.state
+        ));
+        console.log(nonogramState.nonogram);
+        console.log(props.index);
+    };
+    // defineEmits<{(e: 'updateCell', index: [number, number]): void}>();
+    // // const updateCellEmit = () => {
+    // //     emit('updateCell');
+    // // }
 </script>
 
 <template>
     <div 
         class="w-8 h-8 m-1 border-2 border-black rounded-md"
-        @click="$emit('updateCell', props.index)"
+        @click="clicked"
     >
+        <!-- @click="$emit('updateCell', props.index)" -->
         <!-- {{ state }} -->
         <div 
             v-if="props.state" 

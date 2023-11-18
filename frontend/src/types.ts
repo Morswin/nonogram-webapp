@@ -4,6 +4,7 @@ interface INonogram {
     nonogramHeight: number
 
     getAsArray(): INonogramIndex[]
+    setCell(index:INonogramIndex): void
 };
 
 class Nonogram implements INonogram {
@@ -32,13 +33,11 @@ class Nonogram implements INonogram {
         
         return _ret;
     }
+
+    setCell = (index:INonogramIndex): void => {
+        this.nonogramArray.set([index.x, index.y], index.value);
+    }
 };
-    // function setArrayCell(index: number, value: boolean): void {
-    //     let _temp: [number, number] = toArrayIndex(index);
-    //     let y: number = _temp[0];
-    //     let x: number = _temp[1];
-    //     nonogramState.nonogramArray[y][x] = value;
-    // }
     // function getArrayCell(index: number): boolean {
     //     let _temp: [number, number] = toArrayIndex(index);
     //     let y: number = _temp[0];

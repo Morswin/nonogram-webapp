@@ -4,8 +4,8 @@
     import NonogramCell from './NonogramCell.vue'  // My IDE points out an error here, yet it works as it should
 
     /* Pinia store */
-    import { useTestStore } from '../stores/testStore'
-    const nonogramState = useTestStore();
+    import { useNonogramStore } from '../stores/nonogramStore'
+    const nonogramState = useNonogramStore();
 
     /* Event handlers */
     const updateCellHandler = (index) => {

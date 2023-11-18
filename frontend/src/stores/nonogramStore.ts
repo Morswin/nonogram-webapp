@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { type INonogram, Nonogram } from '../types';
 
 
-export const useTestStore = defineStore('tests', () => {
+export const useNonogramStore = defineStore('nonograms', () => {
     const nonogram = ref<INonogram>(
         new Nonogram()
     )
