@@ -35,7 +35,20 @@ class Nonogram implements INonogram {
     }
 
     setCell = (index:INonogramIndex): void => {
-        this.nonogramArray.set([index.x, index.y], index.value);
+        let _newMap: Map<[number, number], boolean> = new Map<[number, number], boolean>();
+        this.nonogramArray.forEach((value: boolean, key: [number, number]) => {
+            if (key[0] == index.x && key[1] == index.y) {
+                _newMap.set(key, index.value);
+            } else {
+                _newMap.set(key, value);
+            }
+        });
+        this.nonogramArray = _newMap;
+        // console.log(
+        //     // this.nonogramArray.delete([index.x, index.y])
+        //     this.nonogramArray.clear()
+        // );
+        // this.nonogramArray.set([index.x, index.y], index.value);
     }
 };
     // function getArrayCell(index: number): boolean {

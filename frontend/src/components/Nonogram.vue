@@ -8,9 +8,9 @@
     const nonogramState = useNonogramStore();
 
     /* Event handlers */
-    const updateCellHandler = (index) => {
-        console.log(index);
-    };
+    // const updateCellHandler = (index) => {
+    //     console.log(index);
+    // };
 </script>
 
 <template>
@@ -22,9 +22,9 @@
                 :state="cell.value"
                 :index="cell.getAsKey()"
                 class="border-2 border-black"
-                @update-cell="updateCellHandler(index)"
                 client:load
             />
+                <!-- @update-cell="updateCellHandler(index)" -->
         </div>
     </section>
 </template>

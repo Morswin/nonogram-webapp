@@ -1,8 +1,9 @@
 <script setup lang="ts">
     import { type INonogramIndex, NonogramIndex } from '../types'
+    import { ref, watch } from 'vue'
 
     interface Props {
-        state: boolean
+        state: ref<boolean>
         index: [number, number]
     }
     const props = defineProps<Props>()    
@@ -21,6 +22,11 @@
         console.log(nonogramState.nonogram);
         console.log(props.index);
     };
+
+    watch(
+        props.state,
+        (newState) => {}
+    );
     // defineEmits<{(e: 'updateCell', index: [number, number]): void}>();
     // // const updateCellEmit = () => {
     // //     emit('updateCell');
