@@ -1,9 +1,11 @@
+import { ref, type Ref } from 'vue'
+
 interface INonogram {
     nonogramArray: Map<[number, number], boolean>
     nonogramWidth: number
     nonogramHeight: number
 
-    getAsArray(): INonogramIndex[]
+    getAsArray(): Ref<INonogramIndex[]>
     setCell(index:INonogramIndex): void
 };
 
@@ -23,7 +25,7 @@ class Nonogram implements INonogram {
         }
     }
 
-    getAsArray = (): INonogramIndex[] => {
+    getAsArray = (): Ref<INonogramIndex[]> => {
         // console.log(this.nonogramArray);
 
         let _ret: INonogramIndex[] = new Array<INonogramIndex>();
@@ -31,7 +33,7 @@ class Nonogram implements INonogram {
             _ret.push(new NonogramIndex(key[0], key[1], value));
         })
         
-        return _ret;
+        return ref(_ret);
     }
 
     setCell = (index:INonogramIndex): void => {

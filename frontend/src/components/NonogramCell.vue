@@ -3,7 +3,7 @@
     import { ref, watch } from 'vue'
 
     interface Props {
-        state: ref<boolean>
+        state: boolean
         index: [number, number]
     }
     const props = defineProps<Props>()    
@@ -13,7 +13,7 @@
     const nonogramState = useNonogramStore();
 
     const clicked = () => {
-        console.log(nonogramState.nonogram);
+        // console.log(nonogramState.nonogram);
         nonogramState.nonogram.setCell(new NonogramIndex(
             props.index[0],
             props.index[1],
@@ -23,10 +23,20 @@
         console.log(props.index);
     };
 
+
     watch(
-        props.state,
-        (newState) => {}
+        props, (val) => {
+            currentState.value = val.state;
+        }//,
+        // {deep: true}
+        // () => props.state,
+        // (newState) => {
+            //     currentState.value = newState;
+        //     console.log("zmiana stanu");
+        // }
     );
+
+    const currentState = ref<boolean>(props.state)
     // defineEmits<{(e: 'updateCell', index: [number, number]): void}>();
     // // const updateCellEmit = () => {
     // //     emit('updateCell');
@@ -41,7 +51,7 @@
         <!-- @click="$emit('updateCell', props.index)" -->
         <!-- {{ state }} -->
         <div 
-            v-if="props.state" 
+            v-if="currentState" 
             class="bg-black w-full h-full"
         >
         </div>
